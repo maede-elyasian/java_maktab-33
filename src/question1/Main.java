@@ -36,7 +36,10 @@ public class Main {
 
 
         System.out.println("cities: " + showCities(students));
-        System.out.println(showCityStudent(students));
+        System.out.println("-----------------------------");
+        System.out.println("cities and students:\n" + showCityStudent(students));
+        System.out.println("-----------------------------");
+        System.out.println("course and cities:\n" + showCourseAndCities(students));
 
 
     }
@@ -51,7 +54,7 @@ public class Main {
 
     public static HashMap<String, List<String>> showCityStudent(ArrayList<Student> students) {
         HashMap<String, List<String>> cityAndStudent = new HashMap<>();
-        for(Student student : students){
+        for (Student student : students) {
             String city = student.getCity();
             List<String> studentOfsameCity = cityAndStudent.get(city);
             if (studentOfsameCity == null) {
@@ -60,10 +63,25 @@ public class Main {
             }
             studentOfsameCity.add(student.getName());
         }
+
         return cityAndStudent;
 
     }
 
+    public static HashMap<String, HashSet<String>> showCourseAndCities(ArrayList<Student> students) {
+        HashMap<String, HashSet<String>> courseCity = new HashMap<>();
+
+        for (Student student : students) {
+            String course = student.getCourseName();
+            HashSet<String> sameCity = courseCity.get(course);
+            if (sameCity == null) {
+                sameCity = new HashSet<>();
+                courseCity.put(course, sameCity);
+            }
+            sameCity.add(student.getCity());
+        }
+        return courseCity;
+    }
 
 
 }
