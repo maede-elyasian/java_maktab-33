@@ -49,6 +49,7 @@ public class Main {
         for (Student student : students) {
             cities.add(student.getCity());
         }
+
         return cities;
     }
 
@@ -61,7 +62,7 @@ public class Main {
                 studentOfsameCity = new ArrayList();
                 cityAndStudent.put(city, studentOfsameCity);
             }
-            studentOfsameCity.add(student.getName());
+            studentOfsameCity.add(student.getName() );
         }
 
         return cityAndStudent;
@@ -70,7 +71,6 @@ public class Main {
 
     public static HashMap<String, HashSet<String>> showCourseAndCities(ArrayList<Student> students) {
         HashMap<String, HashSet<String>> courseCity = new HashMap<>();
-
         for (Student student : students) {
             String course = student.getCourseName();
             HashSet<String> sameCity = courseCity.get(course);
