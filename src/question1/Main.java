@@ -1,13 +1,17 @@
 package question1;
 
 import exceptions.InvalidAgeException;
+import exceptions.InvalidNameException;
 
 import java.util.*;
 
 public class Main {
-    public static void main(String[] args) throws InvalidAgeException {
+    static ArrayList<String> city = new ArrayList<>();
+
+    public static void main(String[] args) throws InvalidNameException, InvalidAgeException {
         ArrayList<Student> students = new ArrayList<>();
-        Student s1 = new Student("maede elyasaian", 15, "physics", "tehran");
+
+        Student s1 = new Student("shiva taheri", 15, "physics", "tehran");
         students.add(s1);
         Student s2 = new Student("zahar akbari", 14, "chemistry", "esfahan");
         students.add(s2);
@@ -31,15 +35,19 @@ public class Main {
         students.add(s11);
         Student s12 = new Student("reza taqavi", 17, "computer", "rasht");
         students.add(s12);
-        Student s13 = new Student("sanaz razavi", 13, "math", "qom");
+        Student s13 = new Student("sanaz razavi", 16, "math", "qom");
         students.add(s13);
+        Student s14 = new Student("ali jafari", 14, "biology", "yazd");
+        students.add(s14);
 
 
-        System.out.println("cities: " + showCities(students));
+        System.out.println("cities:\n " + showCities(students));
         System.out.println("-----------------------------");
         System.out.println("cities and students:\n" + showCityStudent(students));
         System.out.println("-----------------------------");
         System.out.println("course and cities:\n" + showCourseAndCities(students));
+        System.out.println("-----------------------------");
+        //System.out.println(cityAverage(cityAndAge(students)));
 
 
     }
@@ -62,9 +70,8 @@ public class Main {
                 studentOfsameCity = new ArrayList();
                 cityAndStudent.put(city, studentOfsameCity);
             }
-            studentOfsameCity.add(student.getName() );
+            studentOfsameCity.add("name:" + student.getName() + ",age:" + student.getAge() + " ,course: " + student.getCourseName());
         }
-
         return cityAndStudent;
 
     }
@@ -82,6 +89,8 @@ public class Main {
         }
         return courseCity;
     }
+
+
 
 
 }
